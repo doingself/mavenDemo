@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="sycDao" />
+        <module name="sycModel" />
+        <module name="sycService" />
+        <module name="sycWeb" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="sycDao" target="1.5" />
+      <module name="sycModel" target="1.5" />
+      <module name="sycProject" target="1.5" />
+      <module name="sycService" target="1.5" />
+      <module name="sycWeb" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
