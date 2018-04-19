@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ssmArtifact-web/ssmArtifact-web.iml" filepath="$PROJECT_DIR$/ssmArtifact-web/ssmArtifact-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssmArtifactcore/ssmArtifactcore.iml" filepath="$PROJECT_DIR$/ssmArtifactcore/ssmArtifactcore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssmProject.iml" filepath="$PROJECT_DIR$/ssmProject.iml" />
+    </modules>
+  </component>
+</project>
