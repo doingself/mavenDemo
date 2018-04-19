@@ -29,6 +29,14 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- my core module -->
+        <dependency>
+            <groupId>ssmGroup</groupId>
+            <artifactId>ssmArtifact-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <build>

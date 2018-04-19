@@ -1,34 +1,3 @@
-
-# sycProject
-
-Idea + Maven 多 module 工程, module 间相互依赖的简单 Java Web Demo
-
-![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-0%402x.png)
-
-![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-1%402x.png)
-
-![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-2%402x.png)
-
-![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-3%402x.png)
-
-![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-4%402x.png)
-
-![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-5%402x.png)
-
-![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-6%402x.png)
-
-![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-7%402x.png)
-
-![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-8%402x.png)
-
-![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-9%402x.png)
-
-![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-10%402x.png)
-
-![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-11%402x.png)
-
-![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-12%402x.png)
-
 # ssmProject
 
 Idea + maven (多个 module)
@@ -66,6 +35,7 @@ Idea + maven (多个 module)
 ### 关联 module
 
 ![image](https://github.com/doingself/mavenDemo/blob/master/images/ssmProject/QQ20180419-12.png)
+![image](https://github.com/doingself/mavenDemo/blob/master/images/ssmProject/QQ20180419-15.png)
 
 ### 其他设置
 
@@ -75,7 +45,40 @@ Idea + maven (多个 module)
 ![image](https://github.com/doingself/mavenDemo/blob/master/images/ssmProject/QQ20180419-13.png)
 ![image](https://github.com/doingself/mavenDemo/blob/master/images/ssmProject/QQ20180419-14.png)
 
+## ssm 搭建
+
+## ssm 配置
 
 
 
 
+
+# sycProject
+
+Idea + Maven 多 module 工程, module 间相互依赖的简单 Java Web Demo
+
+![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-0%402x.png)
+
+![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-1%402x.png)
+
+![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-2%402x.png)
+
+![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-3%402x.png)
+
+![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-4%402x.png)
+
+![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-5%402x.png)
+
+![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-6%402x.png)
+
+![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-7%402x.png)
+
+![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-8%402x.png)
+
+![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-9%402x.png)
+
+![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-10%402x.png)
+
+![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-11%402x.png)
+
+![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-12%402x.png)

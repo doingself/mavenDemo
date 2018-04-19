@@ -6,6 +6,11 @@
         <element id="directory" name="classes">
           <element id="module-output" name="ssmArtifact-web" />
         </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="ssmArtifact-core-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="ssmArtifact-core" />
+          </element>
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/ssmArtifact-web/target/ssmArtifact-web/META-INF/MANIFEST.MF" />

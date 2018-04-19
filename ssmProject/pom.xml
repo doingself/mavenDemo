@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>ssmArtifactcore</module>
+        <module>ssmArtifact-core</module>
         <module>ssmArtifact-web</module>
     </modules>
 

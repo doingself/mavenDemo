@@ -6,13 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ssmArtifact-core" />
         <module name="ssmArtifact-web" />
-        <module name="ssmArtifactcore" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ssmArtifact-core" target="1.5" />
       <module name="ssmArtifact-web" target="1.7" />
-      <module name="ssmArtifactcore" target="1.5" />
       <module name="ssmProject" target="1.5" />
     </bytecodeTargetLevel>
   </component>
