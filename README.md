@@ -47,11 +47,28 @@ Idea + maven (多个 module)
 
 ## ssm 搭建
 
++ 完善目录结构(controller / service / dao / model)
++ 使用 maven 引入 ssm/数据库等各种 jar 包
+
 ## ssm 配置
 
++ `log4j.properties`
++ `jdbc.properties`
++ `mapping/*.xml`
++ `spring-mvc.xml`
++ `spring-mybatis.xml`
++ `web.xml`
 
+## 部署 Tomcat
 
++ `war` 将WEB工程以包的形式上传到服务器
+	发布模式，这是先打成war包，再发布
++ `war exploded` 将WEB工程以当前文件夹的位置关系上传到服务器
+	直接把文件夹、jsp页面 、classes等等移到Tomcat 部署文件夹里面，进行加载部署。因此这种方式支持热部署，一般在开发的时候也是用这种方式。
 
+![image](https://github.com/doingself/mavenDemo/blob/master/images/ssmProject/QQ20180420-0.png)
+![image](https://github.com/doingself/mavenDemo/blob/master/images/ssmProject/QQ20180420-1.png)
+![image](https://github.com/doingself/mavenDemo/blob/master/images/ssmProject/QQ20180420-2.png)
 
 # sycProject
 
