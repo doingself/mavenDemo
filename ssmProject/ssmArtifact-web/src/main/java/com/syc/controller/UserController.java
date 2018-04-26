@@ -12,15 +12,15 @@ import javax.annotation.Resource;
 @RequestMapping("/user")
 public class UserController {
 
-/*    @Resource
+    @Resource
     private UserService userService;
 
-    @RequestMapping("/showUser.do")
+    @RequestMapping("/showUser")
     @ResponseBody
     public String selectUser(){
         String result = userService.getHaha();
         return "usercon.selectu" + result;
-    }*/
+    }
 
     @RequestMapping("/aa")
     @ResponseBody
