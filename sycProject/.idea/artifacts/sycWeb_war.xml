@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="sycWeb:war">
-    <output-path>$PROJECT_DIR$/sycWeb/target</output-path>
-    <root id="archive" name="sycWeb.war">
-      <element id="artifact" artifact-name="sycWeb:war exploded" />
-    </root>
-  </artifact>
-</component>
