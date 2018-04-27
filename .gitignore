@@ -26,3 +26,6 @@ hs_err_pid*
 
 #idea
 .idea
+
+# ssm
+ssmProject/ssmArtifact-web/target/
