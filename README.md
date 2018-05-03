@@ -45,6 +45,33 @@ Idea + maven (多个 module)
 ![image](https://github.com/doingself/mavenDemo/blob/master/images/ssmProject/QQ20180419-13.png)
 ![image](https://github.com/doingself/mavenDemo/blob/master/images/ssmProject/QQ20180419-14.png)
 
+### 集成 ExtJS
+
+#### 准备工作
+
++ [DOWNLOAD GPL VERSION OF SENCHA EXT JS](https://www.sencha.com/legal/gpl/)
++ [Download Sencha Cmd](https://www.sencha.com/products/extjs/cmd-download/)
+
+#### 创建 ExtJS 项目
+
++ 解压 `ext-6.2.0-gpl.zip`
++ 解压 `SenchaCmd-6.2.2-osx-no_jre.app.zip` 并安装
++ 创建 `ssmProject` 工程 `sencha -sdk /Users/syc/Documents/ext-6.2.0 generate app ssmProject /Users/syc/Documents/workspace/ssmProject`
+
+`export PATH=${PATH}:/Users/syc/bin/Sencha/Cmd/6.2.2.36`
+
+```
+bogon:IdeaWorkspace syc$ sencha -sdk ext-6.2.0 generate app ssmProject ssmProject
+Sencha Cmd v6.2.2.36
+[WRN] the following remote package repository directories did not initialize properly :
+[WRN] 	 - /Users/syc/bin/Sencha/Cmd/repo/.sencha
+[WRN] 	 - /Users/syc/bin/Sencha/Cmd/repo/pkgs
+[ERR] javax/xml/bind/DatatypeConverter
+[ERR]
+The application was last modified by an older version of Sencha Cmd (6.2.0.103).
+Running "sencha package upgrade" may resolve the error described above.
+```
+
 ## ssm 搭建
 
 + 完善目录结构(controller / service / dao / model)
@@ -69,6 +96,19 @@ Idea + maven (多个 module)
 ![image](https://github.com/doingself/mavenDemo/blob/master/images/ssmProject/QQ20180420-0.png)
 ![image](https://github.com/doingself/mavenDemo/blob/master/images/ssmProject/QQ20180420-1.png)
 ![image](https://github.com/doingself/mavenDemo/blob/master/images/ssmProject/QQ20180420-2.png)
+
+## ssmProject 集成 WebSocket
+
+spring4.0以后加入了对websocket技术的支持
+
++ 添加 jar 包
++ 实现 `HandshakeInterceptor`
++ 实现 `WebSocketHandler`
++ 继承 `WebMvcConfigurerAdapter` 实现 `WebSocketConfigurer`
++ 配置 ``
+
+
+
 
 # sycProject
 

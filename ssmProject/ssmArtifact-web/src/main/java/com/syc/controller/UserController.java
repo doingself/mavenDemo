@@ -15,16 +15,11 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @RequestMapping("/showUser")
+    @RequestMapping("/select")
     @ResponseBody
     public String selectUser(){
         String result = userService.getHaha();
         return "usercon.selectu" + result;
     }
 
-    @RequestMapping("/aa")
-    @ResponseBody
-    public String index(){
-        return "hello world index";
-    }
 }

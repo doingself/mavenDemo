@@ -1,5 +1,7 @@
 package com.syc.dao;
 
-public interface UserDao {
+import com.syc.model.User;
 
+public interface UserDao {
+    public User getUserById(int id);
 }

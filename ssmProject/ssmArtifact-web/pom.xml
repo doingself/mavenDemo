@@ -37,19 +37,13 @@
 
     <dependencies>
 
-        <!-- 添加jstl依赖 -->
+        <!-- my core module -->
         <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <groupId>ssmGroup</groupId>
+            <artifactId>ssmArtifact-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
-        <!-- java ee -->
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
-        </dependency>
 
         <!-- 添加junit4依赖 -->
         <dependency>
@@ -59,12 +53,29 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- my core module -->
+
         <dependency>
-            <groupId>ssmGroup</groupId>
-            <artifactId>ssmArtifact-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
         </dependency>
+
+
+        <!-- java ee -->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+        </dependency>
+
+
+        <!-- 添加jstl依赖 -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
 
         <!-- 添加spring核心依赖 -->
         <dependency>
@@ -112,12 +123,23 @@
             <artifactId>spring-aop</artifactId>
             <version>${spring.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <!-- webSocket -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-messaging</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
 
         <!-- 添加mybatis依赖 -->
         <dependency>
@@ -125,7 +147,6 @@
             <artifactId>mybatis</artifactId>
             <version>${mybatis.version}</version>
         </dependency>
-
         <!-- 添加mybatis/spring整合包依赖 -->
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -133,25 +154,37 @@
             <version>1.2.2</version>
         </dependency>
 
+
         <!-- 添加mysql驱动依赖 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql-driver.version}</version>
         </dependency>
+
+
         <!-- 添加数据库连接池依赖 -->
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
             <version>1.2.2</version>
         </dependency>
-
-        <!-- 添加fastjson -->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.1.41</version>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.1</version>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.9</version>
+        </dependency>
+
 
         <!-- 添加日志相关jar包 -->
         <dependency>
@@ -170,7 +203,7 @@
             <version>${slf4j.version}</version>
         </dependency>
 
-        <!-- log end -->
+
         <!-- 映入JSON -->
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
@@ -189,23 +222,18 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.8.0</version>
         </dependency>
-
         <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>1.3.1</version>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.8.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.4</version>
-        </dependency>
 
+        <!-- 添加fastjson -->
         <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>1.9</version>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.1.41</version>
         </dependency>
 
     </dependencies>
