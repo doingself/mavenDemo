@@ -100,15 +100,13 @@ Running "sencha package upgrade" may resolve the error described above.
 ## ssmProject 集成 WebSocket
 
 spring4.0以后加入了对websocket技术的支持
+参考 `package com.syc.websocket`
 
 + 添加 jar 包
 + 实现 `HandshakeInterceptor`
 + 实现 `WebSocketHandler`
 + 继承 `WebMvcConfigurerAdapter` 实现 `WebSocketConfigurer`
-+ 配置 ``
-
-
-
++ 添加 spring 配置
 
 # sycProject
 

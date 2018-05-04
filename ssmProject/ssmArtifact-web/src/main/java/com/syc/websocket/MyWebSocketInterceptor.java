@@ -16,6 +16,7 @@ public class MyWebSocketInterceptor extends HttpSessionHandshakeInterceptor{
 
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
 
+        // 将ServerHttpRequest转换成request请求相关的类，用来获取request域中的用户信息
         if (request instanceof ServletServerHttpRequest){
             ServletServerHttpRequest servletServerHttpRequest = (ServletServerHttpRequest) request;
             HttpSession httpSession = servletServerHttpRequest.getServletRequest().getSession(false);
