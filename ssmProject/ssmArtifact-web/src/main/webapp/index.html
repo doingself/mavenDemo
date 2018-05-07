@@ -21,10 +21,9 @@ Welcome<br/><input id="text" type="text"/>
     //判断当前浏览器是否支持WebSocket
     if ('WebSocket' in window) {
         // 客户端的主要API就是 创建websocket、监听打开、关闭、发送信息、处理信息等方法。
-        // websocket = new WebSocket("ws://10.10.16.18:8080/ssm/websocket.do");
-        websocket = new WebSocket("ws://127.0.0.1:8080/ssm/websocket.do");
-    }
-    else {
+        websocket = new WebSocket("ws://10.10.16.32:8080/ssm/websocket.do");
+        // websocket = new WebSocket("ws://127.0.0.1:8080/ssm/websocket.do");
+    } else {
         alert('当前浏览器 Not support websocket')
         // 如果环境不支持websocket，则使用sockJS来模拟连接实现
         websocket = new SockJS("http://127.0.0.1:8080/ssm/js/websocket.do");

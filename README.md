@@ -45,12 +45,28 @@ Idea + maven (多个 module)
 ![image](https://github.com/doingself/mavenDemo/blob/master/images/ssmProject/QQ20180419-13.png)
 ![image](https://github.com/doingself/mavenDemo/blob/master/images/ssmProject/QQ20180419-14.png)
 
-### 集成 ExtJS
+### 集成 ExtJS (集成失败😂😂😂)
+
+1. 样式比较适合做后端前台，风格统一，组件完备，功能强大
+2. 几乎不用写样式，直接调用组件就可以了
+
+ExtJS的版本繁多，本文收集了ExtJS各个版本的下载链接，包括官网和非官网的，以及各种汉化版api，欢迎大家下载分享。
+
+ExtJS最新版下载链接：http://www.sencha.com/products/ExtJS/download/
+ExtJS 4.2.1 下载链接：http://cdn.sencha.com/ext/gpl/ext-4.2.1-gpl.zip
+ExtJS 4.0.7 下载链接：http://cdn.sencha.io/ext-4.0.7-gpl.zip
+ExtJS 3.4.0 下载链接：http://cdn.sencha.com/ext/gpl/ext-3.4.1.1-gpl.zip
+ExtJS 2.3.0 下载链接：http://dev.sencha.com/deploy/ext-2.3.0.zip
+
+一般历史项目很多用的是2.2.x的版本，而且没有版权问题。（2.2.3相对稳定，但其实bug也不少）
+3.x比起2.x改进很多，包括稳定性上的问题，但需要注意版权
+4.x版本是一个飞跃式的版本，整个架构都更完善了，MVC，按需加载，plugin机制，components架构等都很不错。
+4.0的时候侧重于底层架构，性能不行，后面的4.1和4.2的changelog都说大幅改进性能
 
 #### 准备工作
 
 + [DOWNLOAD GPL VERSION OF SENCHA EXT JS](https://www.sencha.com/legal/gpl/)
-+ [Download Sencha Cmd](https://www.sencha.com/products/extjs/cmd-download/)
++ [Download Sencha Cmd](https://www.sencha.com/products/ExtJS/cmd-download/)
 
 #### 创建 ExtJS 项目
 
@@ -71,6 +87,11 @@ Sencha Cmd v6.2.2.36
 The application was last modified by an older version of Sencha Cmd (6.2.0.103).
 Running "sencha package upgrade" may resolve the error described above.
 ```
+
+#### TODO
+
+在网上找前端框架的资料, 发现现在已经基本不用 ExtJS 了
+我个人还是挺习惯 ExtJS 的, 但是此次未能成功集成😂😂😂
 
 ## ssm 搭建
 
