@@ -75,6 +75,8 @@
     <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
   </listener>
 
+  <!-- contextConfigLocation不是必须的，
+  如果不配置contextConfigLocation，springmvc的配置文件默认在：WEB-INF/servlet的name+"-servlet.xml" -->
   <!-- spring mvc servlet-->
   <servlet>
     <servlet-name>SpringMVC</servlet-name>
