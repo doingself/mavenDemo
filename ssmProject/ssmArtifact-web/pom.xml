@@ -157,6 +157,7 @@
             <version>1.2.2</version>
         </dependency>
         <!-- mybatis 逆向 生成 dao model mapping-->
+        <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-core -->
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>

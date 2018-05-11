@@ -10,7 +10,7 @@
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
             <property name="suppressAllComments" value="false"/>
             <!-- 不希望生成的注释中包含时间戳 -->
-            <property name="suppressDate" value="true" />
+            <property name="suppressDate" value="false" />
             <!-- 是否  自动为每一个生成的类创建一个构造方法-->
             <property name="constructorBased" value="false"/>
         </commentGenerator>
@@ -28,8 +28,7 @@
         </javaTypeResolver>
 
         <!-- targetProject:生成PO类的位置 -->
-        <javaModelGenerator targetPackage="com.test.entity"
-                            targetProject=".\src">
+        <javaModelGenerator targetPackage="com.test.entity" targetProject="./src/test">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
             <!-- 从数据库返回的值被清理前后的空格 -->
@@ -37,16 +36,13 @@
         </javaModelGenerator>
 
         <!-- targetProject:mapper映射文件生成的位置 -->
-        <sqlMapGenerator targetPackage="com.test.dao"
-                         targetProject=".\src">
+        <sqlMapGenerator targetPackage="com.test.dao" targetProject="./src/test">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
 
         <!-- targetPackage：mapper接口生成的位置 -->
-        <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.test.dao"
-                             targetProject=".\src">
+        <javaClientGenerator targetPackage="com.test.dao" targetProject="./src/test" type="XMLMAPPER">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
