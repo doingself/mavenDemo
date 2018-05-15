@@ -52,13 +52,18 @@
 
 
 
+        <!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->
+        <table schema="ssm" tableName="user" domainObjectName="User" ></table>
         <!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->
-        <!--<table tableName="temp_tab" domainObjectName="TempTab" ></table>-->
-        <table tableName="user" domainObjectName="User" ></table>
-
+        <table tableName="user" domainObjectName="UserPO"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
 
         <!-- 指定数据库表 -->
         <!--<table schema="" tableName="user"></table>-->
+        <!--<table tableName="user" domainObjectName="User" ></table>-->
         <!--<table  tableName="test"  domainObjectName="Test"-->
                 <!--enableCountByExample="false"   enableUpdateByExample="false"-->
                 <!--enableDeleteByExample="false"  enableSelectByExample="false"-->
