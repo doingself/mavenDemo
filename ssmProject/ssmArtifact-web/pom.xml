@@ -13,7 +13,7 @@
     <packaging>war</packaging>
 
     <name>ssmArtifact-web Maven Webapp</name>
-    <!-- FIXME change it to the project's website -->
+    <!-- change it to the project's website -->
     <url>http://www.example.com</url>
 
     <properties>
@@ -263,6 +263,7 @@
                         <overwrite>true</overwrite>
                     </configuration>
                 </plugin>
+
                 <!--<plugin>-->
                     <!--<groupId>org.mybatis.generator</groupId>-->
                     <!--<artifactId>mybatis-generator-maven-plugin</artifactId>-->
@@ -273,7 +274,7 @@
                             <!--<goals>-->
                                 <!--<goal>generate</goal>-->
                             <!--</goals>-->
-                            <!--<phase>generate</phase>-->
+                            <!--&lt;!&ndash;<phase>generate</phase>&ndash;&gt;-->
                             <!--<configuration>-->
                                 <!--<verbose>true</verbose>-->
                                 <!--<overwrite>true</overwrite>-->
@@ -317,7 +318,6 @@
                     <artifactId>maven-clean-plugin</artifactId>
                     <version>3.0.0</version>
                 </plugin>
-                <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
                     <version>3.0.2</version>
