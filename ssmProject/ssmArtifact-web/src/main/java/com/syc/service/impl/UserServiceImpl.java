@@ -1,6 +1,7 @@
 package com.syc.service.impl;
 
 import com.syc.dao.UserDao;
+import com.syc.dao.UserMapper;
 import com.syc.model.User;
 import com.syc.service.UserService;
 import org.springframework.stereotype.Service;
@@ -14,10 +15,14 @@ public class UserServiceImpl implements UserService {
         return "user service imp";
     }
 
+//    @Resource
+//    private UserDao userDao;
+
     @Resource
-    private UserDao userDao;
+    private UserMapper userMapper;
 
     public User getUserById(int id){
-        return userDao.getUserById(id);
+        User user = userMapper.selectByPrimaryKey(id);
+        return user;
     }
 }

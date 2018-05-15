@@ -10,7 +10,7 @@
     <context id="testTables" targetRuntime="MyBatis3">
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
-            <property name="suppressAllComments" value="false"/>
+            <property name="suppressAllComments" value="true"/>
             <!-- 不希望生成的注释中包含时间戳 -->
             <property name="suppressDate" value="false" />
             <!-- 是否  自动为每一个生成的类创建一个构造方法-->
@@ -53,24 +53,14 @@
 
 
         <!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->
-        <table schema="ssm" tableName="user" domainObjectName="User" ></table>
-        <!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->
-        <table tableName="user" domainObjectName="UserPO"
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false" >
-            <property name="useActualColumnNames" value="false"/>
-        </table>
-
-        <!-- 指定数据库表 -->
-        <!--<table schema="" tableName="user"></table>-->
         <!--<table tableName="user" domainObjectName="User" ></table>-->
-        <!--<table  tableName="test"  domainObjectName="Test"-->
-                <!--enableCountByExample="false"   enableUpdateByExample="false"-->
-                <!--enableDeleteByExample="false"  enableSelectByExample="false"-->
-                <!--selectByExampleQueryId="false">-->
-            <!--<generatedKey  column="ID"  sqlStatement="selectuuid_short()"-->
-                           <!--identity="false"/>-->
-        <!--</table>-->
+        <table schema="ssm" tableName="user" domainObjectName="User"></table>
+
+        <table tableName="temp_tab"
+                enableCountByExample="false"   enableUpdateByExample="false"
+                enableDeleteByExample="false"  enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
 
         <!--<table  tableName="teacher"   domainObjectName="Tercher">-->
             <!--<generatedKey  column="ID"  sqlStatement="select uuid_short()"   identity="false"/>-->

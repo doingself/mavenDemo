@@ -5,13 +5,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.syc.model.User;
+import com.syc.service.UserService;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
 
+import javax.annotation.Resource;
+
 public class WebSocketPushHandler implements WebSocketHandler {
+
+    @Resource
+    private UserService userService;
 
     private static final List<WebSocketSession> users = new ArrayList<WebSocketSession>();
 
@@ -44,6 +52,12 @@ public class WebSocketPushHandler implements WebSocketHandler {
     public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
         // 将消息进行转化，因为是消息是json数据，可能里面包含了发送给某个人的信息，所以需要用json相关的工具类处理之后再封装成TextMessage，
         // 我这儿并没有做处理，消息的封装格式一般有{from:xxxx,to:xxxxx,msg:xxxxx}，来自哪里，发送给谁，什么消息等等
+
+        User user = this.userService.getUserById(1);
+        ObjectMapper mapper = new ObjectMapper();
+        String userStr = mapper.writeValueAsString(user);
+        System.out.println("user service imp ==="+userStr);
+
 
         String username= (String) session.getAttributes().get("WEBSOCKET_USERNAME");
         System.out.println("用户"+username+" 发送 "+message.getPayload().toString());
