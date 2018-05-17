@@ -7,18 +7,26 @@ import com.syc.model.User;
 import com.syc.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.annotation.Resource;
 import javax.json.Json;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 
 @Controller
 @RequestMapping("/user")
+
+//这里用了@SessionAttributes，可以直接把model中的user(也就key)放入其中
+//这样保证了session中存在user这个对象
+@SessionAttributes("user")
+
 public class UserController {
 
     @Resource
@@ -31,8 +39,14 @@ public class UserController {
         return "usercon.selectu" + result;
     }
 
+    @RequestMapping("loginOut")
+    public String loginOut(HttpSession session){
+        //通过session.invalidata()方法来注销当前的session
+        session.invalidate();
+        return "login";
+    }
 
-    @RequestMapping("/get")
+    @RequestMapping(value="/get",method= RequestMethod.GET)
     public void selectUser(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setCharacterEncoding("UTF-8");
