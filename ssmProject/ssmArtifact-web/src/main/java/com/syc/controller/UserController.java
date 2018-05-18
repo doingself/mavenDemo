@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.syc.model.User;
 import com.syc.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,16 +35,46 @@ public class UserController {
 
     @RequestMapping("/haha")
     @ResponseBody
-    public String haha(){
-        String result = userService.getHaha();
-        return "usercon.selectu" + result;
+    public String haha(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession(true);
+        String attribute = (String) session.getAttribute("login");
+
+
+        String path = request.getContextPath();
+        String basePath = request.getScheme() + "://"
+                + request.getServerName() + ":" + request.getServerPort()
+                + path + "/";
+
+        StringBuilder result = new StringBuilder();
+
+        if (StringUtils.isEmpty(attribute) == false){
+            User user = (User) session.getAttribute("user");
+            result.append(user.getName());
+            result.append(" --- ");
+            result.append(attribute);
+        } else {
+            result.append("usercontroller haha() no login");
+            result.append(userService.getHaha());
+        }
+        result.append(" --- ");
+        result.append(path);
+        result.append(" --- ");
+        result.append(basePath);
+        return result.toString();
+    }
+
+    @RequestMapping("login")
+    public String login(){
+        return "login";
     }
 
     @RequestMapping("loginOut")
     public String loginOut(HttpSession session){
+        session.removeAttribute("login");
+        session.removeAttribute("user");
         //通过session.invalidata()方法来注销当前的session
         session.invalidate();
-        return "login";
+        return "loginOut";
     }
 
     @RequestMapping(value="/get",method= RequestMethod.GET)
@@ -54,8 +85,16 @@ public class UserController {
             e.printStackTrace();
         }
         response.setCharacterEncoding("UTF-8");
+
+        //true是表示如果没有则新建一个session
+        HttpSession session = request.getSession(true);
+
         int userId = Integer.parseInt(request.getParameter("id"));
         User user = this.userService.getUserById(userId);
+
+        session.setAttribute("user",user);
+        session.setAttribute("login","suc");
+
         ObjectMapper mapper = new ObjectMapper();
         try {
             response.getWriter().write(mapper.writeValueAsString(user));

@@ -1,7 +1,5 @@
 
-/*
--- create database ssm;
-*/
+create database if not exists ssm character set utf8;
 
 use `ssm`;
 
@@ -14,11 +12,8 @@ CREATE TABLE `user` (
 `sex` char(1) DEFAULT NULL COMMENT '性别',
 `address` varchar(256) DEFAULT NULL COMMENT '地址',
 
-constraint pk_user primary key (`id`)
-);
-
-
-insert  user(username,password,name,birthday,sex,address) values('aa','aa','aa',now(),'a','aa');
+ primary key (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 
 
 CREATE TABLE `temp_tab` (
@@ -31,9 +26,21 @@ CREATE TABLE `temp_tab` (
 constraint pk_user primary key (`id`)
 );
 
-insert into temp_tab(code,name,update_date) values('ccc','nnn',now());
-insert into temp_tab(code,name,update_date) values('cc','nn',DATE_FORMAT('2018-02-12 13:23:02','%Y-%m-%d %T'));
 
+create table game(
+`id` int(11) AUTO_INCREMENT,
+`name` varchar(20) COMMENT '赛事名称'
+`remark` varchar(20) COMMENT '备注',
+`status` int COMMENT '状态',
+primary key (`id`)
+);
+
+create table match(
+`id` int(11) AUTO_INCREMENT,
+`game_id` int,
+
+
+);
 
 -- 服务器转发的消息
 create table `msg_relay` (
@@ -58,6 +65,12 @@ CREATE TABLE `msg_receive` (
 
 constraint pk_tab primary key (`id`)
 );
+
+
+insert  user(username,password,name,birthday,sex,address) values('aa','aa','aa',now(),'a','aa');
+
+insert into temp_tab(code,name,update_date) values('ccc','nnn',now());
+insert into temp_tab(code,name,update_date) values('cc','nn',DATE_FORMAT('2018-02-12 13:23:02','%Y-%m-%d %T'));
 
 
 select * from user;

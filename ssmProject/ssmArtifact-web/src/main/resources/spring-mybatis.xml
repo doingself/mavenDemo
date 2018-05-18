@@ -106,8 +106,14 @@
             <!--<tx:method name="get*" propagation="SUPPORTS" read-only="true" />-->
         <!--</tx:attributes>-->
     <!--</tx:advice>-->
-    <!-- 切面 -->
+
+    <!-- AOP定义切面添加事务管理 -->
     <!--<aop:config>-->
+        <!--1-->
         <!--<aop:advisor advice-ref="txAdvice" pointcut="execution(* com.syc.service.impl.*.*(..))" />-->
+        <!--2-->
+        <!--<aop:pointcut expression="execution(public * com.syc.*.*(..))" id="myPointcut"/>-->
+        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut"/>-->
     <!--</aop:config>-->
+
 </beans>
