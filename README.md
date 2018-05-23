@@ -4,6 +4,10 @@ Idea + maven (多个 module)
 
 + Spring + Spring MVC + MyBatis
 + WebSocket
++ Mybatis Generator
++ redis
+
++ ExtJS 集成失败
 
 ## 项目搭建
 
@@ -52,15 +56,15 @@ Idea + maven (多个 module)
 
 ExtJS的版本繁多，本文收集了ExtJS各个版本的下载链接，包括官网和非官网的，以及各种汉化版api，欢迎大家下载分享。
 
-ExtJS最新版下载链接：http://www.sencha.com/products/ExtJS/download/
-ExtJS 4.2.1 下载链接：http://cdn.sencha.com/ext/gpl/ext-4.2.1-gpl.zip
-ExtJS 4.0.7 下载链接：http://cdn.sencha.io/ext-4.0.7-gpl.zip
-ExtJS 3.4.0 下载链接：http://cdn.sencha.com/ext/gpl/ext-3.4.1.1-gpl.zip
-ExtJS 2.3.0 下载链接：http://dev.sencha.com/deploy/ext-2.3.0.zip
++ ExtJS最新版下载链接：http://www.sencha.com/products/ExtJS/download/
++ ExtJS 4.2.1 下载链接：http://cdn.sencha.com/ext/gpl/ext-4.2.1-gpl.zip
++ ExtJS 4.0.7 下载链接：http://cdn.sencha.io/ext-4.0.7-gpl.zip
++ ExtJS 3.4.0 下载链接：http://cdn.sencha.com/ext/gpl/ext-3.4.1.1-gpl.zip
++ ExtJS 2.3.0 下载链接：http://dev.sencha.com/deploy/ext-2.3.0.zip
 
-一般历史项目很多用的是2.2.x的版本，而且没有版权问题。（2.2.3相对稳定，但其实bug也不少）
-3.x比起2.x改进很多，包括稳定性上的问题，但需要注意版权
-4.x版本是一个飞跃式的版本，整个架构都更完善了，MVC，按需加载，plugin机制，components架构等都很不错。
+一般历史项目很多用的是2.2.x的版本，而且没有版权问题。（2.2.3相对稳定，但其实bug也不少）  
+3.x比起2.x改进很多，包括稳定性上的问题，但需要注意版权  
+4.x版本是一个飞跃式的版本，整个架构都更完善了，MVC，按需加载，plugin机制，components架构等都很不错。  
 4.0的时候侧重于底层架构，性能不行，后面的4.1和4.2的changelog都说大幅改进性能
 
 #### 准备工作
@@ -128,6 +132,85 @@ spring4.0以后加入了对websocket技术的支持
 + 实现 `WebSocketHandler`
 + 继承 `WebMvcConfigurerAdapter` 实现 `WebSocketConfigurer`
 + 添加 spring 配置
+
+## ssmProject 集成 MyBatis Generator
+
+`MyBatis Generator` (MBG) 是一个Mybatis的代码生成器，它可以帮助我们根据数据库中表的设计生成对应的 `实体类`，`xml Mapper`文件，接口以及帮助类(也就是我们可以借助该类来进行简单的CRUD操作)，这样就避免了我们每使用到一张表的数据就需要手动去创建对应的类和xml文件，这就帮我们节约了大量的时间去开发和业务逻辑有关的功能，但是如果对联合查询和存储过程您仍然需要手写SQL和对象。
+
+1. maven 配置
+```xml
+
+    <dependencies>
+		<dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.5</version>
+        </dependency>
+
+        ...
+    </dependencies>
+    <build>
+        <finalName>ssmArtifact-web</finalName>
+
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+            <plugins>
+
+                <plugin>
+                    <groupId>org.mybatis.generator</groupId>
+                    <artifactId>mybatis-generator-maven-plugin</artifactId>
+                    <version>1.3.2</version>
+                    <configuration>
+                        <verbose>true</verbose>
+                        <overwrite>true</overwrite>
+                    </configuration>
+                </plugin>
+
+                ...
+            </plugins>
+        </pluginManagement>
+    </build>
+```
+2. 配置 generatorConfig.xml
+
+	参考 [ssmProject/ssmArtifact-web/generatorConfig.xml](https://github.com/doingself/mavenDemo/blob/master/ssmProject/ssmArtifact-web/src/main/resources/generatorConfig.xml) 配置
+
+3. 运行
+```java
+        List<String> warnings = new ArrayList<String>();
+        boolean overwrite = true;
+
+        //指定 逆向工程配置文件
+        File configFile = new File(MybatisGenerator.class.getResource("/generatorConfig.xml").getFile());
+        ConfigurationParser cp = new ConfigurationParser(warnings);
+        Configuration config = null;
+        try {
+            config = cp.parseConfiguration(configFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (XMLParserException e) {
+            e.printStackTrace();
+        }
+        DefaultShellCallback callback = new DefaultShellCallback(overwrite);
+        MyBatisGenerator myBatisGenerator = null;
+        try {
+            myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+        try {
+            myBatisGenerator.generate(null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+```
+
+
+## ssmProject 集成 Redis
+
 
 # sycProject
 
