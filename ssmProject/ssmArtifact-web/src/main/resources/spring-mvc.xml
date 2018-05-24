@@ -32,6 +32,10 @@
     <!-- 静态资源默认servlet配置 -->
     <mvc:default-servlet-handler/>
 
+    <!-- 开启spring aop 注解支持 -->
+    <aop:aspectj-autoproxy/>
+
+
     <mvc:interceptors>
         <!-- 配置登陆拦截器 -->
         <mvc:interceptor>
@@ -63,6 +67,7 @@
     </bean>
 
     <!-- 配置jsp 显示ViewResolver -->
+    <!-- 约定大于配置：约定视图页面的全路径 = prefix + viewName + suffix -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/views/"/>
@@ -78,4 +83,11 @@
         <!-- 内存中的最大值 -->
         <property name="maxInMemorySize" value="4096"/>
     </bean>
+
+
+    <!-- 资源映射 -->
+    <!--<mvc:resources location="/css/" mapping="/css/**" />-->
+    <!--<mvc:resources location="/js/" mapping="/js/**" />-->
+    <!--<mvc:resources location="/images/" mapping="/images/**" />-->
+
 </beans>

@@ -20,6 +20,8 @@
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
     <!-- 自动扫描service包下所有使用注解的类型 -->
+    <!-- 配置扫描spring注解(@Component、@Controller、@Service、@Repository)时扫描的包，同时也开启了spring注解支持 -->
+    <!-- 这个地方只需要扫描service包即可，因为controller包由springMVC配置扫描，mapper包由mybatis配置扫描 -->
     <context:component-scan base-package="com.syc.service"/>
 
     <!-- 配置数据库相关参数properties的属性：${url} -->
@@ -75,7 +77,7 @@
 
         <!-- 扫描model包 使用别名 -->
         <property name="typeAliasesPackage" value="com.syc.model"/>
-        <!-- 扫描sql配置文件:mapper需要的xml文件 -->
+        <!-- 扫描sql配置文件:mapper需要的xml文件(resource中的 xml) -->
         <!--<property name="mapperLocations" value="classpath:mapping/*.xml" />-->
         <property name="mapperLocations" value="classpath*:com/syc/model/mapper/*.xml" />
     </bean>
@@ -94,31 +96,34 @@
     </bean>
 
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
-    <!-- 配置基于注解的声明式事务 -->
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!-- 配置基于注解的声明式事务-->
+    <!--@Transactional(propagation = Propagation.REQUIRED)-->
+    <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
 
+    <!--REQUIRED 支持当前事务，如果当前没有事务，就新建一个事务。这是最常见的选择。-->
+    <!--SUPPORTS 支持当前事务，如果当前没有事务，就以非事务方式执行。-->
     <!-- 配置事务 -->
-    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
-        <!--<tx:attributes>-->
-            <!--<tx:method name="save*" propagation="REQUIRED" />-->
-            <!--<tx:method name="insert*" propagation="REQUIRED" />-->
-            <!--<tx:method name="add*" propagation="REQUIRED" />-->
-            <!--<tx:method name="create*" propagation="REQUIRED" />-->
-            <!--<tx:method name="delete*" propagation="REQUIRED" />-->
-            <!--<tx:method name="update*" propagation="REQUIRED" />-->
-            <!--<tx:method name="find*" propagation="SUPPORTS" read-only="true" />-->
-            <!--<tx:method name="select*" propagation="SUPPORTS" read-only="true" />-->
-            <!--<tx:method name="get*" propagation="SUPPORTS" read-only="true" />-->
-        <!--</tx:attributes>-->
-    <!--</tx:advice>-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="save*" propagation="REQUIRED" />
+            <tx:method name="insert*" propagation="REQUIRED" />
+            <tx:method name="add*" propagation="REQUIRED" />
+            <tx:method name="create*" propagation="REQUIRED" />
+            <tx:method name="delete*" propagation="REQUIRED" />
+            <tx:method name="update*" propagation="REQUIRED" />
+            <tx:method name="find*" propagation="SUPPORTS" read-only="true" />
+            <tx:method name="select*" propagation="SUPPORTS" read-only="true" />
+            <tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+        </tx:attributes>
+    </tx:advice>
 
     <!-- AOP定义切面添加事务管理 -->
-    <!--<aop:config>-->
-        <!--1-->
-        <!--<aop:advisor advice-ref="txAdvice" pointcut="execution(* com.syc.service.impl.*.*(..))" />-->
-        <!--2-->
-        <!--<aop:pointcut expression="execution(public * com.syc.*.*(..))" id="myPointcut"/>-->
-        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut"/>-->
-    <!--</aop:config>-->
+    <aop:config>
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.syc.service.*.*(..))" />
+    </aop:config>
+
+
+    <!-- 开启spring aop 注解支持，要想aop真正生效，还需要把切面类配置成bean -->
+    <aop:aspectj-autoproxy/>
 
 </beans>

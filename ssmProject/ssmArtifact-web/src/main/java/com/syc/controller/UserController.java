@@ -30,7 +30,7 @@ import java.io.UnsupportedEncodingException;
 
 public class UserController {
 
-    @Resource
+    @Resource(name="userService")
     private UserService userService;
 
     @RequestMapping("/haha")

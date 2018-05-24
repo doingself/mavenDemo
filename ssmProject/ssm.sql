@@ -3,6 +3,8 @@ create database if not exists ssm character set utf8;
 
 use `ssm`;
 
+drop TABLE if EXISTS `user`;
+
 CREATE TABLE `user` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `username` varchar(32) NOT NULL unique COMMENT '用户名称',
