@@ -20,6 +20,10 @@
       http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+
+    <!-- 引入dbconfig.properties属性文件 -->
+    <context:property-placeholder location="classpath:*.properties" />
+
     <!-- 自动扫描包及子包中的组件, 这样就不需要配置<bean>标签, 直接使用注解就可以了.-->
     <!-- 自动扫描  @Controller-->
     <context:component-scan base-package="com.syc.controller"/>

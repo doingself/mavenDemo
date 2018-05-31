@@ -80,6 +80,7 @@
         <!-- 扫描sql配置文件:mapper需要的xml文件(resource中的 xml) -->
         <!--<property name="mapperLocations" value="classpath:mapping/*.xml" />-->
         <property name="mapperLocations" value="classpath*:com/syc/model/mapper/*.xml" />
+         <property name="configLocation" value="classpath:mybatis-config.xml"/>
     </bean>
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->

@@ -53,9 +53,11 @@
         <!--<property name="jedisConnectionFactory" ref="connectionFactory" />-->
     <!--</bean>-->
 
+    <!-- 调用连接池工厂配置 -->
     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
           p:connection-factory-ref="connectionFactory" >
         <!--以下针对各种数据进行序列化方式的选择-->
+        <!-- 如果不配置Serializer，那么存储的时候智能使用String，如果用User类型存储，那么会提示错误User can't cast to String -->
         <property name="keySerializer">
             <bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
         </property>
@@ -92,10 +94,11 @@
     </bean>
 
     <!--配置切面拦截方法 -->
-    <!--<aop:config proxy-target-class="true">-->
-        <!--<aop:pointcut id="controllerMethodPointcut"-->
-                      <!--expression="execution(* com.syc.service.impl.*.select*(..))"/>-->
-        <!--<aop:advisor advice-ref="methodCacheInterceptor" pointcut-ref="controllerMethodPointcut"/>-->
-    <!--</aop:config>-->
+    <aop:config proxy-target-class="true">
+        <!--将service包下的所有select开头的方法加入拦截去掉select则加入所有方法 -->
+        <aop:pointcut id="controllerMethodPointcut" expression="execution(* com.syc.service.impl.*.*redis(..))"/>
+        <aop:pointcut id="selectMethodPointcut" expression="execution(* com.syc.dao.*Mapper.*redis(..))"/>
+        <aop:advisor advice-ref="methodCacheInterceptor" pointcut-ref="controllerMethodPointcut"/>
+    </aop:config>
 
 </beans>

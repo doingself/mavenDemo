@@ -15,18 +15,38 @@
   </welcome-file-list>
 
 
-  <!-- Spring和mybatis的配置文件 -->
+  <!-- redis和mybatis的配置文件 -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring-mybatis.xml</param-value>
+    <param-value>classpath:spring-redis.xml, classpath:spring-mybatis.xml</param-value>
   </context-param>
 
   <!--log4j-->
-  <context-param>
-    <param-name>log4jConfigLocation</param-name>
-    <param-value>classpath:log4j.properties</param-value>
-  </context-param>
+  <!--<context-param>-->
+    <!--<param-name>log4jConfigLocation</param-name>-->
+    <!--<param-value>classpath:log4j.properties</param-value>-->
+  <!--</context-param>-->
+  <!--<listener>-->
+    <!--<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>-->
+  <!--</listener>-->
 
+  <!-- log4j2-begin -->
+  <listener>
+    <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+  </listener>
+  <filter>
+    <filter-name>log4jServletFilter</filter-name>
+    <filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>log4jServletFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
+  <!-- log4j2-end -->
 
   <!-- 编码过滤器 -->
   <filter>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!-- 日志开启 -->
+        <setting name="logImpl" value="LOG4J"/>
+        <!-- 二级缓存开启 -->
+        <setting name="cacheEnabled" value="true"/>
+        <setting name="lazyLoadingEnabled" value="false"/>
+        <setting name="aggressiveLazyLoading" value="true"/>
+    </settings>
+    <!-- 配置映射类的别名 -->
+    
+    <typeAliases>
+        <!-- 配置entity下的所有别名 别名首字母小写 -->
+        <package name="com.syc.model" />
+    </typeAliases>
+</configuration>
