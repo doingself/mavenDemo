@@ -70,10 +70,6 @@ public class UserController {
         return result.toString();
     }
 
-    @RequestMapping("login")
-    public String login(){
-        return "login";
-    }
 
     @RequestMapping("loginOut")
     public String loginOut(HttpSession session){

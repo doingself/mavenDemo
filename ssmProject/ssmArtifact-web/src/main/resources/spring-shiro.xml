@@ -49,8 +49,6 @@
                 /WEB-INF/jsp/**=anon
                 /adminUserLogin/**=anon
 
-
-
                 /**/submitLogin.do=anon
                 /**=user,kickout
             </value>

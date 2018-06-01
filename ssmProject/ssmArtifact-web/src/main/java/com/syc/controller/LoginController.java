@@ -38,7 +38,10 @@ public class LoginController{
     @Resource
     UserService userService;
 
-
+    @RequestMapping("login")
+    public String login(){
+        return "login";
+    }
     /**
      * @Description: 登录认证
      */
