@@ -3,7 +3,7 @@ package com.syc.model;
 import java.util.Date;
 
 public class User {
-    private Integer id;
+    private Long id;
 
     private String username;
 
@@ -11,17 +11,17 @@ public class User {
 
     private String name;
 
-    private Date birthday;
+    private Boolean isDisabled;
 
-    private String sex;
+    private String isDeleted;
 
-    private String address;
+    private Date createTime;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,27 +49,27 @@ public class User {
         this.name = name == null ? null : name.trim();
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public Boolean getIsDisabled() {
+        return isDisabled;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setIsDisabled(Boolean isDisabled) {
+        this.isDisabled = isDisabled;
     }
 
-    public String getSex() {
-        return sex;
+    public String getIsDeleted() {
+        return isDeleted;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
+    public void setIsDeleted(String isDeleted) {
+        this.isDeleted = isDeleted == null ? null : isDeleted.trim();
     }
 
-    public String getAddress() {
-        return address;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

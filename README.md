@@ -6,6 +6,7 @@ Idea + maven (多个 module)
 + WebSocket
 + Mybatis Generator
 + redis
++ shiro
 
 + ExtJS 集成失败
 
@@ -211,6 +212,7 @@ spring4.0以后加入了对websocket技术的支持
 
 ## ssmProject 集成 Redis
 
+## ssmProject 集成 shiro
 
 # sycProject
 
@@ -241,3 +243,6 @@ Idea + Maven 多 module 工程, module 间相互依赖的简单 Java Web Demo
 ![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-11%402x.png)
 
 ![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-12%402x.png)
+
+## 鸣谢
++ https://www.cnblogs.com/maixianyu8888/p/8302151.html

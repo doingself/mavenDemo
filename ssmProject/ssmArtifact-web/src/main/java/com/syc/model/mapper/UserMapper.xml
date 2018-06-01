@@ -2,34 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.syc.dao.UserMapper">
   <resultMap id="BaseResultMap" type="com.syc.model.User">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="birthday" jdbcType="DATE" property="birthday" />
-    <result column="sex" jdbcType="CHAR" property="sex" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="is_disabled" jdbcType="BIT" property="isDisabled" />
+    <result column="is_deleted" jdbcType="CHAR" property="isDeleted" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, username, password, name, birthday, sex, address
+    id, username, password, name, is_disabled, is_deleted, create_time
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from user
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.syc.model.User">
     insert into user (id, username, password, 
-      name, birthday, sex, address
-      )
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{sex,jdbcType=CHAR}, #{address,jdbcType=VARCHAR}
-      )
+      name, is_disabled, is_deleted, 
+      create_time)
+    values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{isDisabled,jdbcType=BIT}, #{isDeleted,jdbcType=CHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.syc.model.User">
     insert into user
@@ -46,19 +46,19 @@
       <if test="name != null">
         name,
       </if>
-      <if test="birthday != null">
-        birthday,
+      <if test="isDisabled != null">
+        is_disabled,
       </if>
-      <if test="sex != null">
-        sex,
+      <if test="isDeleted != null">
+        is_deleted,
       </if>
-      <if test="address != null">
-        address,
+      <if test="createTime != null">
+        create_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
@@ -69,14 +69,14 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="birthday != null">
-        #{birthday,jdbcType=DATE},
+      <if test="isDisabled != null">
+        #{isDisabled,jdbcType=BIT},
       </if>
-      <if test="sex != null">
-        #{sex,jdbcType=CHAR},
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=CHAR},
       </if>
-      <if test="address != null">
-        #{address,jdbcType=VARCHAR},
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -92,26 +92,26 @@
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="birthday != null">
-        birthday = #{birthday,jdbcType=DATE},
+      <if test="isDisabled != null">
+        is_disabled = #{isDisabled,jdbcType=BIT},
       </if>
-      <if test="sex != null">
-        sex = #{sex,jdbcType=CHAR},
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=CHAR},
       </if>
-      <if test="address != null">
-        address = #{address,jdbcType=VARCHAR},
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.syc.model.User">
     update user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
-      birthday = #{birthday,jdbcType=DATE},
-      sex = #{sex,jdbcType=CHAR},
-      address = #{address,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+      is_disabled = #{isDisabled,jdbcType=BIT},
+      is_deleted = #{isDeleted,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

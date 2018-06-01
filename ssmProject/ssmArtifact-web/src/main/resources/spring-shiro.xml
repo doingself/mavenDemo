@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:websocket="http://www.springframework.org/schema/websocket"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+      http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd
+      http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+      http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!--shiro 核心安全接口  -->
+        <property name="securityManager" ref="securityManager"></property>
+        <!--登录时的连接  -->
+        <property name="loginUrl" value="/login"></property>
+        <!--未授权时跳转的连接  -->
+        <property name="unauthorizedUrl" value="/unauthorized.jsp"></property>
+        <!-- 其他过滤器 -->
+        <property name="filters">
+            <map>
+                <!-- <entry key="rememberMe" value-ref="RememberMeFilter"></entry> -->
+                <entry key="kickout" value-ref="KickoutSessionControlFilter"/>
+            </map>
+        </property>
+
+        <!-- 读取初始自定义权限内容-->
+        <!-- 如果使用authc验证,需重写实现rememberMe的过滤器,或配置formAuthenticationFilter的Bean -->
+        <property name="filterChainDefinitions">
+            <value>
+                /js/**=anon
+                /css/**=anon
+                /images/**=anon
+                /skin/**=anon
+                /lib/**=anon
+                /nodel/**=anon
+                /WEB-INF/jsp/**=anon
+                /adminUserLogin/**=anon
+
+
+
+                /**/submitLogin.do=anon
+                /**=user,kickout
+            </value>
+        </property>
+    </bean>
+
+
+
+
+    <!-- Shiro生命周期处理器-->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+    <!-- 安全管理器 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="MyRealm"/>
+        <property name="rememberMeManager" ref="rememberMeManager"/>
+    </bean>
+
+    <bean id="MyRealm" class="com.syc.shiro.MyRealm" >
+        <property name="cachingEnabled" value="false"/>
+    </bean>
+
+    <!-- 相当于调用SecurityUtils.setSecurityManager(securityManager) -->
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod" value="org.apache.shiro.SecurityUtils.setSecurityManager"/>
+        <property name="arguments" ref="securityManager"/>
+    </bean>
+
+    <!-- sessionIdCookie：maxAge=-1表示浏览器关闭时失效此Cookie -->
+    <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="rememberMe"/>
+        <property name="httpOnly" value="true"/>
+        <property name="maxAge" value="-1"/>
+    </bean>
+
+    <!-- 用户信息记住我功能的相关配置 -->
+    <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="rememberMe"/>
+        <property name="httpOnly" value="true"/>
+        <!-- 配置存储rememberMe Cookie的domain为 一级域名		这里如果配置需要和Session回话一致更好。-->
+        <property name="maxAge" value="604800"/><!-- 记住我==保留Cookie有效7天 -->
+    </bean>
+
+    <!-- rememberMe管理器 -->
+    <bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+        <!-- rememberMe cookie加密的密钥 建议每个项目都不一样 默认AES算法 密钥长度（128 256 512 位）-->
+        <property name="cipherKey"
+                  value="#{T(org.apache.shiro.codec.Base64).decode('3AvVhmFLUs0KTA3Kprsdag==')}"/>
+        <property name="cookie" ref="rememberMeCookie"/>
+    </bean>
+
+    <!-- 记住我功能设置session的Filter -->
+    <bean id="RememberMeFilter" class="com.syc.shiro.RememberMeFilter" />
+
+    <!-- rememberMeParam请求参数是 boolean 类型，true 表示 rememberMe -->
+    <!-- shiro规定记住我功能最多得user级别的，不能到authc级别.所以如果使用authc，需打开此配置或重写实现rememberMe的过滤器 -->
+    <!-- <bean id="formAuthenticationFilter" class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter">
+        <property name="rememberMeParam" value="rememberMe"/>
+    </bean> -->
+
+    <bean id="KickoutSessionControlFilter" class="com.syc.shiro.KickoutSessionControlFilter">
+    </bean>
+</beans>

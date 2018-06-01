@@ -21,13 +21,12 @@
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 
-    <!-- 引入dbconfig.properties属性文件 -->
+    <!-- 引入properties属性文件 -->
     <context:property-placeholder location="classpath:*.properties" />
 
     <!-- 自动扫描包及子包中的组件, 这样就不需要配置<bean>标签, 直接使用注解就可以了.-->
-    <!-- 自动扫描  @Controller-->
+    <!-- 配置扫描spring注解(@Component、@Controller、@Service、@Repository)时扫描的包，同时也开启了spring注解支持 -->
     <context:component-scan base-package="com.syc.controller"/>
-
     <context:component-scan base-package="com.syc.websocket"/>
 
     <!-- 开启 spring mvc 注解模式 -->

@@ -5,12 +5,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.syc.model.User;
 import com.syc.service.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
 import javax.json.Json;
@@ -19,6 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -29,6 +32,10 @@ import java.io.UnsupportedEncodingException;
 @SessionAttributes("user")
 
 public class UserController {
+
+
+    protected final static Logger logger = LogManager.getLogger(UserController.class);
+    protected Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
 
     @Resource(name="userService")
     private UserService userService;
@@ -89,7 +96,7 @@ public class UserController {
         //true是表示如果没有则新建一个session
         HttpSession session = request.getSession(true);
 
-        int userId = Integer.parseInt(request.getParameter("id"));
+        Long userId = Long.parseLong(request.getParameter("id"));
         User user = this.userService.getUserById(userId);
 
         session.setAttribute("user",user);
@@ -102,5 +109,49 @@ public class UserController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    @RequestMapping("list.do")
+    public String toList(HttpServletRequest request,
+                         @RequestParam(value="currPage",required=false) Long curr,
+                         @RequestParam(value="pageSize",required=false) Long pageSize){
+        if(curr==null){
+            curr=1L;
+        }
+        if(pageSize==null){
+            pageSize=10L;
+        }
+        Long currPage = (curr-1)*pageSize;
+        Long count = 20l;//userService.selectCount();
+        Long totalPage = 0L;
+        if(count>0){
+            totalPage = count%pageSize==0?count/pageSize:(count/pageSize)+1;
+        }
+        List<User> adminUserList = userService.findByPage(currPage, pageSize);
+        request.setAttribute("adminUserList", adminUserList);
+        request.setAttribute("count", count);
+        request.setAttribute("totalPage", totalPage);
+        request.setAttribute("currPage", curr);
+        request.setAttribute("pageSize", pageSize);
+        //return "redirect:list.do";
+        return "adminUser/list";
+    }
+
+    @RequestMapping(value="checkUserName.do",method=RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> checkUserName(HttpServletRequest request,RedirectAttributes attr,
+                                             @RequestParam(value="account",required=false) String account){
+        User user = new User();
+        user.setUsername(account);
+        User u = userService.getUserByModel(user);
+        if(null==u){
+            resultMap.put("status", 200);
+            resultMap.put("message", true);
+        }else{
+            resultMap.put("status", 204);
+            resultMap.put("message", false);
+        }
+        return resultMap;
     }
 }

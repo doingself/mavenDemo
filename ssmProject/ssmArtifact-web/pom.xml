@@ -140,6 +140,13 @@
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <!-- spring-orm 是spring处理对象关系映射的组件，传递依赖了jdbc、tx等数据库操作有关的组件 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--Spring 对Object/XMl的映射支持,可以让Java与XML之间来回切换-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
@@ -269,11 +276,17 @@
         </dependency>
 
 
-        <!-- 添加数据库连接池依赖 -->
+        <!-- 添加数据库 dbcp 连接池依赖 -->
+        <!--<dependency>-->
+            <!--<groupId>commons-dbcp</groupId>-->
+            <!--<artifactId>commons-dbcp</artifactId>-->
+            <!--<version>1.2.2</version>-->
+        <!--</dependency>-->
+        <!-- 添加数据库 c3p0 连接池依赖 -->
         <dependency>
-            <groupId>commons-dbcp</groupId>
-            <artifactId>commons-dbcp</artifactId>
-            <version>1.2.2</version>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.5</version>
         </dependency>
 
 
@@ -348,44 +361,44 @@
 
 
 
-        <!-- shiro依赖包 -->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.shiro</groupId>-->
-            <!--<artifactId>shiro-core</artifactId>-->
-            <!--<version>${shiro.version}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.shiro</groupId>-->
-            <!--<artifactId>shiro-spring</artifactId>-->
-            <!--<version>${shiro.version}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.shiro</groupId>-->
-            <!--<artifactId>shiro-cas</artifactId>-->
-            <!--<version>${shiro.version}</version>-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<groupId>commons-logging</groupId>-->
-                    <!--<artifactId>commons-logging</artifactId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.shiro</groupId>-->
-            <!--<artifactId>shiro-web</artifactId>-->
-            <!--<version>${shiro.version}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.shiro</groupId>-->
-            <!--<artifactId>shiro-ehcache</artifactId>-->
-            <!--<version>${shiro.version}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.shiro</groupId>-->
-            <!--<artifactId>shiro-quartz</artifactId>-->
-            <!--<version>${shiro.version}</version>-->
-        <!--</dependency>-->
-        <!-- shiro end -->
+        <!--shiro依赖包-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-cas</artifactId>
+            <version>${shiro.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-quartz</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <!--shiro end-->
 
 
 
@@ -448,12 +461,14 @@
                     <!--</dependencies>-->
                 <!--</plugin>-->
 
+                <!-- 指定JDK编译版本 -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.1</version>
                     <configuration>
-                        <source>1.7</source>
-                        <target>1.7</target>
+                        <source>1.8</source>
+                        <target>1.8</target>
                     </configuration>
                 </plugin>
 
