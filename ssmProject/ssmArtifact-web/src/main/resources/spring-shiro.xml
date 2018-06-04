@@ -51,6 +51,7 @@
 
                 /**/submitLogin.do=anon
                 /**=user,kickout
+                /**=authc
             </value>
         </property>
     </bean>
@@ -61,14 +62,22 @@
     <!-- Shiro生命周期处理器-->
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
 
+    <bean id="MyRealm" class="com.syc.shiro.MyRealm" >
+        <property name="cachingEnabled" value="false"/>
+    </bean>
+
+    <!-- 用户信息记住我功能的相关配置 -->
+    <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="rememberMe"/>
+        <property name="httpOnly" value="true"/>
+        <!-- 配置存储rememberMe Cookie的domain为 一级域名		这里如果配置需要和Session回话一致更好。-->
+        <property name="maxAge" value="604800"/><!-- 记住我==保留Cookie有效7天 -->
+    </bean>
+
     <!-- 安全管理器 -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="MyRealm"/>
         <property name="rememberMeManager" ref="rememberMeManager"/>
-    </bean>
-
-    <bean id="MyRealm" class="com.syc.shiro.MyRealm" >
-        <property name="cachingEnabled" value="false"/>
     </bean>
 
     <!-- 相当于调用SecurityUtils.setSecurityManager(securityManager) -->
@@ -82,14 +91,6 @@
         <constructor-arg value="rememberMe"/>
         <property name="httpOnly" value="true"/>
         <property name="maxAge" value="-1"/>
-    </bean>
-
-    <!-- 用户信息记住我功能的相关配置 -->
-    <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
-        <constructor-arg value="rememberMe"/>
-        <property name="httpOnly" value="true"/>
-        <!-- 配置存储rememberMe Cookie的domain为 一级域名		这里如果配置需要和Session回话一致更好。-->
-        <property name="maxAge" value="604800"/><!-- 记住我==保留Cookie有效7天 -->
     </bean>
 
     <!-- rememberMe管理器 -->

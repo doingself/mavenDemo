@@ -85,6 +85,7 @@
   <!-- log4j2-end -->
 
 
+  <!--shiro-->
   <filter>
     <filter-name>shiroFilter</filter-name>
     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
