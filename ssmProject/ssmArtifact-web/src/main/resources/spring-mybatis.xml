@@ -135,5 +135,6 @@
 
     <!-- 开启spring aop 注解支持，要想aop真正生效，还需要把切面类配置成bean -->
     <aop:aspectj-autoproxy/>
+    <aop:config proxy-target-class="true"></aop:config>
 
 </beans>

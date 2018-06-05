@@ -140,7 +140,6 @@ spring4.0以后加入了对websocket技术的支持
 
 1. maven 配置
 ```xml
-
     <dependencies>
 		<dependency>
             <groupId>org.mybatis.generator</groupId>
@@ -245,4 +244,6 @@ Idea + Maven 多 module 工程, module 间相互依赖的简单 Java Web Demo
 ![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-12%402x.png)
 
 ## 鸣谢
-+ https://www.cnblogs.com/maixianyu8888/p/8302151.html
++ 基于Maven+SSM整合shiro+Redis实现后台管理项目 https://www.cnblogs.com/maixianyu8888/p/8302151.html
++ ssm整合Redis https://cloud.tencent.com/developer/article/1019826
++ Mybatis Generator自动生成 https://blog.csdn.net/niqinge/article/details/79280204

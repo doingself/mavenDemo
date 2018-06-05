@@ -35,9 +35,6 @@
     <!-- 静态资源默认servlet配置 -->
     <mvc:default-servlet-handler/>
 
-    <!-- 开启spring aop 注解支持 -->
-    <aop:aspectj-autoproxy/>
-
 
     <mvc:interceptors>
         <!-- 配置登陆拦截器 -->
