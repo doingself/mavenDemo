@@ -211,7 +211,20 @@ spring4.0以后加入了对websocket技术的支持
 
 ## ssmProject 集成 Redis
 
+1. 添加 maven 依赖
+    + `spring-data-redis` spring-redis实现
+    + `jedis` redis客户端
+    + `mybatis-ehcache` Ehcache实现,用于参考
+2. 添加 `redis.properties` 文件, 配置 Redis 参数
+3. 添加 `spring-redis.xml` 配置文件
+4. 在 `web.xml` 中 `contextConfigLocation` 进行配置
+
 ## ssmProject 集成 shiro
+
+1. 配置 maven 依赖
+2. 配置 `spring-shiro.xml`
+3. 实现类
+4. 在 `web.xml` 配置 `DelegatingFilterProxy`
 
 # sycProject
 
@@ -247,3 +260,4 @@ Idea + Maven 多 module 工程, module 间相互依赖的简单 Java Web Demo
 + 基于Maven+SSM整合shiro+Redis实现后台管理项目 https://www.cnblogs.com/maixianyu8888/p/8302151.html
 + ssm整合Redis https://cloud.tencent.com/developer/article/1019826
 + Mybatis Generator自动生成 https://blog.csdn.net/niqinge/article/details/79280204
++ 打包时mapper.xml文件打不进war包 https://www.cnblogs.com/ANCAN-RAY/p/7009258.html
