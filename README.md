@@ -7,6 +7,7 @@ Idea + maven (多个 module)
 + Mybatis Generator
 + redis
 + shiro
++ 二维码
 
 + ExtJS 集成失败
 
@@ -226,6 +227,11 @@ spring4.0以后加入了对websocket技术的支持
 3. 实现类
 4. 在 `web.xml` 配置 `DelegatingFilterProxy`
 
+## ssmProject 集成 二维码
+
+1. 配置 maven 依赖 (com.google.zxing)
+2. 参考 `QRCodeController` 类
+
 # sycProject
 
 Idea + Maven 多 module 工程, module 间相互依赖的简单 Java Web Demo
@@ -257,7 +263,9 @@ Idea + Maven 多 module 工程, module 间相互依赖的简单 Java Web Demo
 ![image](https://github.com/doingself/mavenDemo/blob/master/images/sycProject/QQ20171218-12%402x.png)
 
 ## 鸣谢
+
 + 基于Maven+SSM整合shiro+Redis实现后台管理项目 https://www.cnblogs.com/maixianyu8888/p/8302151.html
 + ssm整合Redis https://cloud.tencent.com/developer/article/1019826
 + Mybatis Generator自动生成 https://blog.csdn.net/niqinge/article/details/79280204
 + 打包时mapper.xml文件打不进war包 https://www.cnblogs.com/ANCAN-RAY/p/7009258.html
++ 二维码 https://blog.csdn.net/zgliang88/article/details/54617795
