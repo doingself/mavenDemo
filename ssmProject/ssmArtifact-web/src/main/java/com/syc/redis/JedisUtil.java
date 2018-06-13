@@ -59,11 +59,11 @@ public class JedisUtil {
         }
     }
 
-    public static void returnResource(final Jedis jedis){
-        if(jedis != null){
-            jedisPool.returnResource(jedis);
-        }
-    }
+//    public static void returnResource(final Jedis jedis){
+//        if(jedis != null){
+//            jedisPool.returnResource(jedis);
+//        }
+//    }
 
 //    public class RedisCache implements Cache
 
