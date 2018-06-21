@@ -8,6 +8,7 @@ Idea + maven (多个 module)
 + redis
 + shiro
 + 二维码
++ HttpURLConnection
 
 + ExtJS 集成失败
 
@@ -232,6 +233,16 @@ spring4.0以后加入了对websocket技术的支持
 1. 配置 maven 依赖 (com.google.zxing)
 2. 参考 `QRCodeController` 类
 
+## ssmProject Http 请求
+
+参考使用 `HttpURLConnection` 的 `com.syc.http.HttpUtil` 工具类
+
+请求方式
+
++ 使用原生 `HttpURLConnection`
++ 使用 `HTTPClient`
+
+
 # sycProject
 
 Idea + Maven 多 module 工程, module 间相互依赖的简单 Java Web Demo
@@ -269,3 +280,4 @@ Idea + Maven 多 module 工程, module 间相互依赖的简单 Java Web Demo
 + Mybatis Generator自动生成 https://blog.csdn.net/niqinge/article/details/79280204
 + 打包时mapper.xml文件打不进war包 https://www.cnblogs.com/ANCAN-RAY/p/7009258.html
 + 二维码 https://blog.csdn.net/zgliang88/article/details/54617795
++ http https://www.cnblogs.com/hhhshct/p/8523697.html
