@@ -15,6 +15,7 @@
       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd
       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+      http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
       http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd
@@ -28,6 +29,7 @@
     <!-- 配置扫描spring注解(@Component、@Controller、@Service、@Repository)时扫描的包，同时也开启了spring注解支持 -->
     <context:component-scan base-package="com.syc.controller"/>
     <context:component-scan base-package="com.syc.websocket"/>
+    <context:component-scan base-package="com.syc.task" />
 
     <!-- 开启 spring mvc 注解模式 -->
     <mvc:annotation-driven/>
@@ -35,6 +37,9 @@
     <!-- 静态资源默认servlet配置 -->
     <mvc:default-servlet-handler/>
 
+    <task:executor id="executor" pool-size="5" />
+    <task:scheduler id="scheduler" pool-size="10" />
+    <task:annotation-driven executor="executor" scheduler="scheduler" mode="proxy"/>
 
     <mvc:interceptors>
         <!-- 配置登陆拦截器 -->

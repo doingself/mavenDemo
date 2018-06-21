@@ -72,6 +72,12 @@ public class HttpUtil {
         return result;
     }
 
+    /**
+     * @param httpUrl
+     * @param param   内容其实跟get的URL中 '? '后的参数字符串一致
+     * String param = "字段名=" + URLEncoder.encode("字符串值", "编码");
+     * @return
+     */
     public static String doPost(String httpUrl, String param) {
 
         HttpURLConnection connection = null;

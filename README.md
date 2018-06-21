@@ -9,6 +9,7 @@ Idea + maven (多个 module)
 + shiro
 + 二维码
 + HttpURLConnection
++ spring 定时器 Scheduled
 
 + ExtJS 集成失败
 
@@ -241,6 +242,24 @@ spring4.0以后加入了对websocket技术的支持
 
 + 使用原生 `HttpURLConnection`
 + 使用 `HTTPClient`
+
+## ssmProject 集成 定时器
+
+1. spring 配置文件 `beans` 中添加属性 `xmlns:task="http://www.springframework.org/schema/task"` 及 `xsi:schemaLocation`
+2. spring 配置文件 `<beans>` 标记内添加
+```
+<context:component-scan base-package="com.syc.task" />
+
+<task:executor id="executor" pool-size="5" />
+<task:scheduler id="scheduler" pool-size="10" />
+<task:annotation-driven executor="executor" scheduler="scheduler" mode="proxy"/>
+```
+
+3. 实现了添加注解 `@Component` `@Scheduled`   
+参考 `com.syc.task.MyTask`
+
+    + fixedDelay
+    + cron
 
 
 # sycProject
